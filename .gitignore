@@ -1,0 +1,10 @@
+/output/
+/runs/
+/temp/
+/archive/
+/tools/python/
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*

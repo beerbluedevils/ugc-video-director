@@ -1,0 +1,6 @@
+interface:
+  display_name: "UGC Workflow"
+  short_description: "Run selected products or batches through UGC production"
+  default_prompt: "Use $ugc-workflow to process the products I specify through the authorized endpoint."
+policy:
+  allow_implicit_invocation: true

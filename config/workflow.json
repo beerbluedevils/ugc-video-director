@@ -1,0 +1,90 @@
+{
+  "workflowVersion": "1.0.0",
+  "projectRoot": ".",
+  "timeZone": "Asia/Bangkok",
+  "browser": {
+    "tool": "mcp__cua_repl",
+    "profile": "Sirawit",
+    "downloadLocation": "C:\\Users\\User\\Downloads",
+    "askWhereToSave": false,
+    "verifyEverySession": true
+  },
+  "sheet": {
+    "url": "https://docs.google.com/spreadsheets/d/1hj97y5gVPzI3pLJLYXAfJmAdxA55nWPYa28IPjZ6pHE/edit?gid=0#gid=0",
+    "tab": "Tiktok",
+    "columns": {
+      "productListId": "A",
+      "name": "B",
+      "details": "C",
+      "link": "D",
+      "productId": "E",
+      "status": "F"
+    },
+    "eligibleStatus": "In Progress",
+    "completedStatus": "Done"
+  },
+  "director": {
+    "plugin": "ugc-video-director",
+    "skill": "ugc-video-with-cute-effect-v3",
+    "lastVerifiedPackageVersion": "1.2.7",
+    "missingDependencyPolicy": "stop",
+    "allowV4Substitution": false
+  },
+  "flow": {
+    "model": "Omni 1.2 Flash",
+    "mode": "Video",
+    "referenceMode": "Elements",
+    "aspectRatio": "9:16",
+    "generationResolution": "360p",
+    "downloadResolution": "720p upscaled/enhanced",
+    "durationSeconds": 10,
+    "count": 1,
+    "uploadFiles": [
+      "storyboard.png"
+    ],
+    "maxRetriesAfterInitial": 3,
+    "maxGenerationAttempts": 4
+  },
+  "tiktok": {
+    "expectedAccount": "@tryandreview1105",
+    "slots": [
+      "11:00",
+      "14:00",
+      "17:00"
+    ],
+    "reuseOfContent": false,
+    "aiGeneratedContent": true,
+    "contentCheckLite": false,
+    "defaultUploadAuthorized": false,
+    "defaultScheduleAuthorized": false
+  },
+  "batch": {
+    "execution": "sequential",
+    "failurePolicy": "stop-batch",
+    "defaultEndpoint": "video-ready"
+  },
+  "models": {
+    "productPreparation": {
+      "model": "gpt-6-luna",
+      "reasoningEffort": "xhigh"
+    },
+    "content": {
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "low"
+    },
+    "browserExecution": {
+      "model": "gpt-6-luna",
+      "reasoningEffort": "xhigh"
+    },
+    "note": "Preferences for actual delegation when available; record real model/effort. No claim that Luna medium was verified."
+  },
+  "output": {
+    "allowedNames": [
+      "storyboard.png",
+      "<ProductId>.mp4",
+      "tiktok_caption.txt",
+      "job.json"
+    ],
+    "workingDirectory": "temp/<RunId>/<ProductId>"
+  }
+}

@@ -1,0 +1,15 @@
+# Workflow and scope
+
+1. Interpret the request as explicit ProductId/PID selections or a bounded count of eligible In Progress rows. Resolve PID to exact ProductId using the current sheet; never use float IDs. Freeze the selected list in `runs/<RunId>.json`; do not silently add replacements for skipped items.
+2. Record `workflowVersion`, request text, product list, endpoint and permissions in the run. Endpoints: `storyboard`, `video-ready`, `tiktok-upload`, `tiktok-scheduled`. Default to video-ready when publication scope is unspecified. For ambiguous upload versus posting, prepare safely and clarify before submission. Record sheet-write authorization independently; test-only jobs do not mutate Sheets or TikTok.
+3. Read product job and verify current state/files. Skip completed items; resume incomplete work at the first unverified step. An ID already present does not make an unfinished item ineligible. Do not refill an existing ID.
+4. Read product and variant facts; fetch/open real product image in temp; store source/variant/row in job. Mark Image Ready only after verifying it.
+5. Apply Director v3 and image generation. Check storyboard and content. Store storyboard + TikTok caption, and embed both prompts in job; mark Storyboard Ready.
+6. Generate with the Flow reference procedure; verify progress/failure/success. Retry only confirmed failure up to three times after initial generation. Persist results; do not reset on handoff. Exhaustion sets Generation Failed and stops the whole batch.
+7. Download existing completed asset at 720p; inspect real file, image and audio as available; record unverified aspects. Mark Video Ready. Stop here unless further action is explicitly authorized.
+8. For authorized TikTok upload, inspect duplicate posts/drafts and account, upload the verified file, insert exact caption, attach matching product. If only upload is authorized, do not Schedule/Publish; record draft state only if actually observed, otherwise record the unfinished form and handoff requirements.
+9. For authorized scheduling, choose an unoccupied current/future allowed slot using live TikTok entries and reservations in all jobs/run records. Submit once and verify the actual Scheduled row, ID/URL and timezone. Persist Scheduled — Pending Sheet Update immediately.
+10. If sheet update is authorized, verify row identity, update only its Status to Done and read back Saved to Drive; mark Completed and return TikTok Posts. Done means scheduling verified, not publication at the future time.
+11. Summarize per-item outcomes and blockers in jobs; run record stores product pointers and aggregate counts, not copied product metadata. Stop at requested endpoint/count. No recurring automation unless requested.
+
+Run fields: `runId`, `workflowVersion`, `startedAt`, `updatedAt`, `request`, `productIds` (strings), `endpoint`, `permissions` (`sheetWrite`, `tiktokUpload`, `tiktokSchedule`), `failurePolicy: stop-batch`, `status`, `items` (productId/jobPath/outcome), `summary`. Write before side effects and after each item. The per-product job is authoritative; reconcile stale run summaries from jobs.
