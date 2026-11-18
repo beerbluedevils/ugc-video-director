@@ -71,7 +71,7 @@
       "reasoningEffort": "medium"
     },
     "content": {
-      "model": "gpt-6.1-sol",
+      "model": "gpt-6.2-sol",
       "reasoningEffort": "low",
       "required": true,
       "evidenceRequired": true
@@ -82,7 +82,7 @@
       "required": true,
       "evidenceRequired": true
     },
-    "note": "Content requires gpt-6.1-sol/low; browserExecution requires gpt-6-luna/medium. Both require actual invocation and returned-agent evidence. productPreparation is a preference."
+    "note": "Content requires gpt-6.2-sol/low; browserExecution requires gpt-6-luna/medium. Both require actual invocation and returned-agent evidence. productPreparation is a preference."
   },
   "output": {
     "allowedNames": [

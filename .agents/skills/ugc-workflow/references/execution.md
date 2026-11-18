@@ -6,7 +6,7 @@ Coordinator reads AGENTS.md, config, workflow.md and state.md once, plus the sel
 
 ## Two agents, three phase assignments
 
-Invoke the required browser agent once with gpt-6-luna/medium, then the content agent once with gpt-6.1-sol/low, then resume the same browser agent with followup_task. Do not spawn replacement agents or perform model tests. Browser preparation releases CUA before returning Image Ready. Content does not control Chrome. Preserve serial product execution and existing authorizations.
+Invoke the required browser agent once with gpt-6-luna/medium, then the content agent once with gpt-6.2-sol/low, then resume the same browser agent with followup_task. Do not spawn replacement agents or perform model tests. Browser preparation releases CUA before returning Image Ready. Content does not control Chrome. Preserve serial product execution and existing authorizations.
 
 Each assignment supplies projectRoot, runPath, jobPath, tempPath, exact ProductId/variant, endpoint, permissions, procedure paths, existing completion evidence and stopping point in one message. Resolve these absolute paths once. Capture a local clock timestamp immediately before dispatch; capture the returned task handle and result receipt. Missing provider telemetry remains an explicit limitation.
 
