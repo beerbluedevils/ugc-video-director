@@ -1,18 +1,26 @@
 # TikTok and final sheet update
 
+Apply [workflow.md — Minimum evidence and mandatory advance](workflow.md#minimum-evidence-and-mandatory-advance) for sufficient evidence and immediate progression. Repeated checks in this procedure use the same recorded observation; they are not new review gates. Inspect again only the named missing, changed or conflicting fact, or the documented recovery condition.
+
 Requires explicit authorization for each endpoint. Read browser.md; use the same chooser-before-click method from flow.md for Select video. Check actual account against config. Prior pilot rows/times are historical examples, never defaults.
+
+Apply [workflow.md — Daily quantity](workflow.md#daily-quantity) in the existing date/slot observation. Record the deduplicated daily count, videosPerDay and remaining capacity with scheduleReservation; a free slot alone does not override the daily cap. Use explicit user times when supplied; otherwise configured slots apply.
 
 ## 8. TikTok Studio — ตรวจเวลาที่ไม่ซ้ำ
 
-1. เลือกแท็บ TikTok Studio ตรวจบัญชีที่ล็อกอินให้ตรง ใน pilot คือ **@tryandreview1105**
-2. กด **Posts** ในเมนูซ้าย
-3. อ่านรายการที่มีป้ายเวลาพร้อมไอคอนนาฬิกา เช่น `Nov 15, 5:00 PM (GMT+7) Bangkok`
-4. ตรวจรายการของวันที่จะใช้ให้ครบ รวม pagination/filter/scroll ที่ UI มี อย่าสรุปว่าเวลาว่างจากแถวแรก ๆ เพียงอย่างเดียว
-5. หาก AX เห็นหัวตารางแต่ไม่เห็นแถว ให้ตรวจ DOM snapshot/สถานะโหลดใหม่หรือเลื่อนส่วนรายการ ไม่ถือว่ารายการว่าง และหลีกเลี่ยง full-page screenshot ของรายการยาว
+ตรวจบัญชีและโพสต์/draft ซ้ำตาม workflow.md หนึ่งครั้ง; ถ้ามีหลักฐานเดิมที่ยังใช้ได้ให้อ้างอิงต่อ การเลือก slot ในข้อ 3–9 ใช้เฉพาะ endpoint ตั้งเวลา ไม่เป็นเงื่อนไขของ upload-only ถ้าผู้ใช้ระบุเวลาให้ใช้เวลานั้นเมื่อว่างและอยู่ในขอบเขต; สุ่มเฉพาะเมื่อไม่ได้ระบุเวลา
+
+1. รับแท็บ TikTok Studio เดิม ใช้ initial state ตรวจบัญชีตาม config และดูหน้าปัจจุบัน หากอยู่ **Posts** แล้วให้ใช้รายการเดิมทันที หากอยู่หน้าอื่นให้กด **Posts** ครั้งเดียว ใช้ผลจากการเปิดแท็บหรือกดปุ่มต่อได้เมื่อมีข้อมูลครบ
+2. เตรียมข้อความต้นแคปชันที่เจาะจงและรายการจองในเครื่องของวันที่ผู้ใช้ระบุจาก handoff เดิม หากยังไม่มีข้อมูลการจอง ให้ค้นเฉพาะวันที่นั้นหนึ่งครั้ง
+3. อ่านแถว **Posts** ครั้งเดียวต่อหน้าหรือช่วงที่เลื่อน ใช้แถวชุดเดียวกันตรวจโพสต์ซ้ำและรวบรวมเวลาของวันที่เป้าหมาย เช่น `Nov 15, 5:00 PM (GMT+7) Bangkok` หากผลที่อ่านได้ยังขาดหลักฐานการตรวจโพสต์ซ้ำ ให้ใช้การค้นหาแคปชันเฉพาะจุดนั้น ตรวจ drafts จากมุมมองเดิมเมื่อแสดงว่าเป็นศูนย์อย่างชัดเจน หากมี drafts ให้ตรวจรายการที่เกี่ยวข้องครั้งเดียว
+4. ใช้ filter วันที่เมื่อ UI มีและใช้ได้กับการตรวจนั้น หรือไล่ pagination/scroll จนมีหลักฐานว่าครอบคลุมวันที่เป้าหมาย หยุดอ่านแถวเมื่อข้อมูลครบ ใช้ผลที่บันทึกไว้แม้เปลี่ยน filter เพื่อตรวจข้อมูลอีกส่วน
+5. หากเห็นเพียงหัวตารางหรือสถานะกำลังโหลด ให้รอหลักฐานว่าแถวพร้อมหรือมีข้อความว่างจริง หาก AX ไม่แสดงข้อมูลที่จำเป็น ให้ใช้ DOM กับส่วนนั้นโดยตรง
 6. ตรวจเวลาปัจจุบันจริงและข้อจำกัดวันล่วงหน้าที่ฟอร์มอนุญาต ตัดเวลาที่ผ่านแล้ว/ใกล้เกินไปออก
-7. สุ่มจาก 11:00, 14:00, 17:00 เฉพาะ slot ที่ไม่มีใน TikTok และไม่มีการจองใน job อื่น หากวันนั้นเต็มให้เลื่อนไปวันถัดไป
+7. สุ่มจาก 11:00, 14:00, 17:00 เฉพาะ slot ที่ไม่มีใน TikTok และไม่มีการจองใน job อื่น หากผู้ใช้ระบุวันที่แน่นอนและวันนั้นเต็ม ให้รายงานว่าไม่มี slot ว่างและหยุดก่อน submit ห้ามเปลี่ยนวันที่เอง การเลื่อนไปวันถัดไปใช้ได้เฉพาะขอบเขตที่ผู้ใช้อนุญาตให้เลือกวันได้
 8. บันทึกวันที่ เวลา timezone และหลักฐานที่ใช้เลือกไว้ใน `scheduleReservation` ก่อน submit
-9. ใกล้ submit ตรวจอีกครั้งหากมีโอกาสที่คนหรืองานอื่นเพิ่มโพสต์ระหว่างทาง
+9. ใช้ผลตรวจ slot และ reservation เดิมจนถึง submit ตรวจใหม่เฉพาะเมื่อพบหลักฐานจริงว่ามีคนหรืองานอื่นเพิ่ม/เปลี่ยนโพสต์ที่กระทบ slot นั้น ห้ามตรวจซ้ำเพราะสมมติว่าอาจมีการเปลี่ยนแปลง
+
+เมื่อบัญชี ผลตรวจซ้ำ และข้อมูลช่วงเวลาที่จำเป็นครบแล้ว ให้บันทึกผลพร้อมเวลาตาม [execution.md — Timing in job.json](execution.md#timing-in-jobjson) แล้วไป **Upload** ทันทีเมื่อมีไฟล์ที่ตรวจแล้วและผลตรวจอนุญาตให้เดินหน้าต่อ
 
 
 ## 9. TikTok — อัปโหลดและใส่ caption
@@ -43,13 +51,15 @@ Requires explicit authorization for each endpoint. Read browser.md; use the same
 2. เลือก radio **Schedule** ไม่ใช่ Now
 3. เปิดช่องวันที่และเวลา เลือกค่าที่จองไว้ โดยอ่าน calendar/time picker จริง ไม่พิมพ์หรือใช้พิกัดที่เดา
 4. ตรวจวัน เดือน **ปี** และเวลาในช่องหลัง picker ปิด
-5. เปิด timezone dropdown ข้างเวลา ตรวจ **Asia/Bangkok / (GMT+7) Local Time** อย่าอาศัยเวลาเครื่องอย่างเดียว
+5. ใช้ค่า timezone ที่แสดงและหลักฐานจากการเลือก ถ้าแสดงไม่ครบหรือจำเป็นต้องเปลี่ยนจึงเปิด dropdown ข้างเวลา ตรวจ **Asia/Bangkok / (GMT+7) Local Time** อย่าอาศัยเวลาเครื่องอย่างเดียว
 6. ใต้ **Allow users to:** ตรวจ **Reuse of content** เป็น unchecked; ไม่กดสลับหากปิดอยู่แล้ว
 7. ตรวจ **AI-generated content** เปิด และใน preview อาจเห็น **Creator labeled as AI-generated**
 8. หา **Content check lite** ในฟอร์ม (อาจต้องเลื่อน) แล้วตรวจว่า unchecked/OFF
 9. ไม่เปลี่ยนตัวเลือกอื่นโดยเดา หากมีฟิลด์บังคับใหม่ให้ดูความหมายและขอบเขตที่ผู้ใช้อนุญาตก่อนทำต่อ
 
 ### ตรวจครั้งสุดท้ายก่อน submit
+
+รวบรวมหลักฐานจากการกรอกและอ่านกลับในข้อก่อนหน้าเป็นการตรวจชุดเดียว ไม่วนเปิดฟิลด์เดิมซ้ำ หากไม่ได้เปลี่ยนค่าและหลักฐานครบ ให้บันทึกและ submit ทันทีภายในขอบเขตที่อนุญาต
 
 - วิดีโอถูกไฟล์และอัปโหลดเสร็จ 720P
 - caption ตรงไฟล์
@@ -58,7 +68,7 @@ Requires explicit authorization for each endpoint. Read browser.md; use the same
 - Reuse OFF, AI-generated ON, Content check lite OFF
 - ตรวจค่าจริงและบันทึกใน `job.json.verification` หากใช้ screenshot ให้เก็บชั่วคราวนอก output แล้วลบหลังบันทึกผล
 
-เมื่อครบ ให้กดปุ่มส่ง **Schedule** ที่ปลายฟอร์มหนึ่งครั้ง ตามขอบเขตที่ผู้ใช้สั่งไว้ หาก session นั้นยังไม่ได้อนุญาตให้ตั้งเวลาจริง ต้องยึดคำขอผู้ใช้ใน session นั้น ห้ามถือว่าคู่มือนี้เป็นการอนุญาตเผยแพร่เอง
+เมื่อครบ ให้กดปุ่มส่ง **Schedule** ที่ปลายฟอร์มหนึ่งครั้ง ตามขอบเขตที่ผู้ใช้สั่งไว้ สิทธิ์จากคำขอผู้ใช้เดิมยังคงใช้ได้เมื่อ resume ใน session ใหม่ ให้ยึดขอบเขตเดิมใน run/job และคำสั่งล่าสุด ถ้ายังไม่มีสิทธิ์ตั้งเวลาจริงให้หยุดที่ endpoint ที่อนุญาต ห้ามถือว่าคู่มือนี้เป็นการอนุญาตเผยแพร่เอง
 
 ## 12. ยืนยันโพสต์จริง — อย่าเชื่อ toast อย่างเดียว
 
@@ -67,21 +77,23 @@ Requires explicit authorization for each endpoint. Read browser.md; use the same
 3. ตรวจแถวที่ตรง: thumbnail, caption, ความยาว และ **ป้ายวันเวลาพร้อม timezone** ต้องตรงค่าที่จอง
 4. บันทึกลิงก์โพสต์/ID จากองค์ประกอบลิงก์ที่แสดงในหน้า ไม่เดาหรือประกอบ ID เอง
 5. pilot เคยแจ้ง toast **Video published** และจำนวน Posts ยัง 40 แต่แถวของ caption ใหม่ยืนยันเป็น Scheduled 15 พ.ย. 17:00 ได้ ดังนั้น toast ไม่ใช่หลักฐานว่าลงทันทีหรือกำหนดเวลาสำเร็จ
-6. ถ้ายังไม่เห็นแถว ให้ตรวจผล search/สถานะโหลดของ Posts ก่อนลองส่งซ้ำ **ห้าม re-upload หรือกด Schedule ซ้ำขณะไม่รู้ผลคำขอแรก**
+6. ถ้ายังไม่เห็นแถว ให้ตรวจสถานะโหลดและ apply search; หาก query ยาวไม่พบให้ใช้ต้น caption ที่สั้นและเจาะจง หรือเคลียร์ filter แล้วดูแถววันที่ที่จองใน Posts เดิม จนพบหลักฐานหรือบันทึกผลไม่ชัดเจน ไม่ถือว่าการค้นไม่พบเป็นหลักฐานอนุญาตให้ส่งซ้ำ **ห้าม re-upload หรือกด Schedule ซ้ำขณะไม่รู้ผลคำขอแรก**
 7. ถ้าพบว่าลงทันที/เวลาผิดจริง ให้รายงานและรักษาข้อมูล อย่าลบหรือเปลี่ยนโพสต์โดยพลการเพื่อซ่อนความผิดพลาด
-8. ตรวจ **แถวใหม่และป้ายเวลาของแถวนั้น** บันทึกค่าที่อ่านได้และเวลาตรวจใน `job.json.verification` หากใช้ screenshot ให้ใช้ชั่วคราวนอก output ภาพที่เห็นแต่โพสต์เก่าไม่ใช่หลักฐาน
+8. ใช้หลักฐานแถวใหม่จากข้อ 3–4 บันทึกค่าที่อ่านได้และเวลาตรวจใน `job.json.verification` โดยไม่ตรวจแถวเดิมอีกรอบ หากใช้ screenshot ให้ใช้ชั่วคราวนอก output ภาพที่เห็นแต่โพสต์เก่าไม่ใช่หลักฐาน
 
 เมื่อยืนยันได้ บันทึก stage `Scheduled — Pending Sheet Update`, post ID/URL, scheduledAt, timezone และผลตรวจใน job.json ทันที ก่อนกลับชีต
+
+จุดจบของการยืนยัน Schedule คือแถวที่ตรงพร้อมข้อมูลข้อ 3–4 ครบแล้ว หยุดค้น/เลื่อน/ถ่ายภาพ/อ่าน DOM ของ Posts เพิ่ม แม้ toast จะบอก Video published หรือจำนวน Posts ยังเท่าเดิม ถ้า sheetWrite=false ให้จบ endpoint tiktok-scheduled โดยบันทึกว่าไม่ได้แก้ชีต ไม่เปิดชีตหรือขอสิทธิ์เพิ่ม
 
 ## 13. กลับ Sheets — เปลี่ยน Status เป็น Done
 
 1. กลับแท็บ **Product Library → Tiktok**
 2. ใช้ช่องชื่อไปยังแถวสินค้า ตรวจค่า A และ E อีกครั้งให้ตรง job โดยเฉพาะถ้ามีการ sort/ย้ายแถว
-3. ตรวจ F ยังเป็น In Progress และมีหลักฐาน Scheduled ของสินค้านี้แล้ว
+3. ใช้ขั้นนี้เฉพาะเมื่อ sheetWrite=true และมีหลักฐาน Scheduled ของสินค้านี้แล้ว ถ้า F เป็น In Progress ให้เปลี่ยนตามข้อถัดไป ถ้าเป็น Done อยู่แล้วให้ใช้ค่าเดิมและสถานะ Saved to Drive เป็นผล readback โดยไม่เขียนซ้ำ; ค่าอื่นที่ขัดกับงานให้บันทึกปัญหาเฉพาะชีต ไม่ทำ TikTok ซ้ำ
 4. เลือกเซลล์ **F ของแถวที่ยืนยันแล้ว** แล้วเปิด dropdown สถานะ เลือก **Done**
 5. pilot เปลี่ยนเฉพาะ F49 โดยเลือกจาก dropdown ไม่แก้ช่วงหลายแถว
 6. อ่านกลับว่าเซลล์เป็น **Done**; ตรวจ formula bar/ค่า UI และสถานะเอกสาร **บันทึกไปยังไดรฟ์แล้ว / Saved to Drive**
-7. ตรวจเลขแถว รหัสงาน ProductId และ Done พร้อมกัน แล้วบันทึกผลใน `job.json.verification` ไม่เก็บไฟล์หลักฐานแยกใน output
+7. รวมหลักฐานเลขแถว รหัสงาน ProductId จากข้อ 2 กับ Done/Saved to Drive จากข้อ 3 หรือ 6 แล้วบันทึกผล ไม่อ่านเซลล์หรือสถานะเดิมซ้ำใน `job.json.verification` ไม่เก็บไฟล์หลักฐานแยกใน output
 8. บันทึก job stage `Completed`, sheetStatus `Done`, ค่า verification และเวลาจริง (ISO 8601 พร้อม +07:00) ไม่ใช้เวลาประมาณที่แต่งขึ้น
 9. กลับ **TikTok Studio → Posts** ให้พร้อมใช้งานต่อ หยุดหลังจำนวนสินค้าที่ผู้ใช้กำหนด ไม่เริ่มสินค้าถัดไปเองนอกขอบเขต
 
