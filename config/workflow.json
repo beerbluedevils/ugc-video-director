@@ -7,7 +7,8 @@
     "profile": "Sirawit",
     "downloadLocation": "C:\\Users\\User\\Downloads",
     "askWhereToSave": false,
-    "verifyEverySession": true
+    "verifyEverySession": false,
+    "downloadSettingsSource": "user-preset; do not inspect or change Chrome Downloads settings"
   },
   "sheet": {
     "url": "https://docs.google.com/spreadsheets/d/1hj97y5gVPzI3pLJLYXAfJmAdxA55nWPYa28IPjZ6pHE/edit?gid=0#gid=0",
@@ -61,22 +62,27 @@
   "batch": {
     "execution": "sequential",
     "failurePolicy": "stop-batch",
-    "defaultEndpoint": "video-ready"
+    "defaultEndpoint": "video-ready",
+    "defaultVideosPerDay": 3
   },
   "models": {
     "productPreparation": {
       "model": "gpt-6-luna",
-      "reasoningEffort": "xhigh"
+      "reasoningEffort": "medium"
     },
     "content": {
       "model": "gpt-6.1-sol",
-      "reasoningEffort": "low"
+      "reasoningEffort": "low",
+      "required": true,
+      "evidenceRequired": true
     },
     "browserExecution": {
       "model": "gpt-6-luna",
-      "reasoningEffort": "xhigh"
+      "reasoningEffort": "medium",
+      "required": true,
+      "evidenceRequired": true
     },
-    "note": "Preferences for actual delegation when available; record real model/effort. No claim that Luna medium was verified."
+    "note": "Content requires gpt-6.1-sol/low; browserExecution requires gpt-6-luna/medium. Both require actual invocation and returned-agent evidence. productPreparation is a preference."
   },
   "output": {
     "allowedNames": [

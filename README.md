@@ -87,4 +87,4 @@ python scripts/inspect_video.py output/<ProductId>/<ProductId>.mp4
 python scripts/update_job.py output/<ProductId>/job.json --patch-file temp/patch.json
 ```
 
-ทั้งสอง job เดิมและขั้นตอน upload/download เคยตรวจในเครื่องแล้ว แต่ repo นี้ไม่ได้แนบประวัติ/หลักฐานเหล่านั้น และยังไม่รับรอง batch หรือ Luna medium แบบครบกระบวนการ
+ทั้งสอง job เดิมและขั้นตอน upload/download เคยตรวจในเครื่องแล้ว แต่ repo นี้ไม่ได้แนบประวัติ/หลักฐานเหล่านั้น และยังไม่รับรอง batch หรือ Luna medium แบบครบกระบวนการ ข้อความนี้บอกขอบเขตการทดสอบในอดีต ไม่ใช่เงื่อนไขให้หยุดถามหรือทดสอบโมเดลเพิ่ม งานปัจจุบันใช้ Luna medium ตาม workflow และทำต่อทันทีเมื่อหลักฐานครบ
